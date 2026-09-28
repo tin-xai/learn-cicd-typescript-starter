@@ -23,3 +23,16 @@ jobs:
 
       - name: Run tests
         run: npm run test -- --coverage
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run format:check
+      - name: Run lint and security checks
+        run: npm run lint
