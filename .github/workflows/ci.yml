@@ -28,5 +28,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: check style
-        run: npm run format:check
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run format:check
